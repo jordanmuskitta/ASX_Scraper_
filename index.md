@@ -26,25 +26,54 @@ Other links:
 
 - Tika Parse Method: https://www.geeksforgeeks.org/parsing-pdfs-in-python-with-tika/
 
+Below is the initial scrape of the program: 
+
 ```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+def first_scrape():
+    #Make original url variable. Make header (to stop anti-scraping software)
 
-- Bulleted
-- List
+    my_url = "https://www.asx.com.au/asx/v2/statistics/todayAnns.do"
 
-1. Numbered
-2. List
+    headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Max-Age': '3600',
+        'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'
+    }
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
+    req = requests.get(my_url, headers, allow_redirects = True)
+    
+    page_soup = soup(req.content, 'html.parser')
+    page_soup
+    
+    #Scrape original webpage for specific pdf link redirect:
+    
+    link_form = "/asx/statistics/displayAnnouncement.do?display=pdf&idsId="
+    links_with_text = []
+    for a in page_soup.find_all('a', href=True): 
+        if a.text: 
+            links_with_text.append(a['href'])
+    
+    filt_links = []
+
+    for i in links_with_text: 
+        if link_form in i: 
+            filt_links.append('http://asx.com.au' + i)
+            
+    return filt_links
 ```
+### Intial Obstacles: 
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+The links that have just been scraped are actually links to a redirection page. This redirection will send to an authentification page that will force the user to sccept the T+C's before allowing access to the company's pdf announcement. The question becomes how do bypass this webpage to access this information. 
+
+I'm sure that there are more sophicated ways and perhaps a way to interact/accept terms on the landing page from python, however I chose a different approach that needed less cross-platform expertise. 
+
+If we download this page local and then scrape this text file for the redirection link we will be able to access the proper pdf. If time permits in the future I will update this method to not have to download this txt file locally before accessing the correct webpage.
+
+
 
 ### Jekyll Themes
 
