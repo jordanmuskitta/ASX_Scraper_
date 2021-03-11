@@ -1,12 +1,30 @@
 ## Welcome to my ASX Announcement Scraper + Sentiment Analysis Twitter Bot
+_Authors: Jordan Muskitta_
 
-You can use the [editor on GitHub](https://github.com/jordanmuskitta/ASX_Scraper_/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+### Program Objectives: 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+- Decipher the structure and content of HTML
+- Use Beautiful Soup to parse HTML
+- Download pdfs locally
+- Convert pdf to txt
+- Analyze text for sentiment
 
-### Markdown
+### Introduction
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+This project uses a wide array of third-party python libraries. However, the bulk of the project will be using in-built python functions and common coding approaches such as loops, string and list manipulations methods.
+
+Some of the choices for parsing and handling pdfs forced due to errors been thrown with use of other more popular pdf extraction libraries such as PyPDF2 and PDFminer. These errors were due to the PDF's encryption? Even though the PDF is accessible, there is an underlying encryption that stops PDFminer and PyPDF2 from extracting text.
+
+Documentation for imported libraries: 
+
+- Vader Sentiment: https://github.com/cjhutto/vaderSentiment
+- Tika: https://github.com/chrismattmann/tika-python
+- Glob: https://docs.python.org/3/library/glob.html
+- Requests: https://requests.readthedocs.io/en/master/
+
+Other links: 
+
+- Tika Parse Method: https://www.geeksforgeeks.org/parsing-pdfs-in-python-with-tika/
 
 ```markdown
 Syntax highlighted code block
