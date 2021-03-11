@@ -75,9 +75,9 @@ If we download this page local and then scrape this text file for the redirectio
 
 
 
-### Jekyll Themes
+### Next Steps:
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/jordanmuskitta/ASX_Scraper_/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+This project has a lot of future development possiblities such as using multiple sentiment analysis tools in order to get an average sentiment score. Another potential upgrade is the development of a custom lexicon.
 
 ### Support or Contact
 
